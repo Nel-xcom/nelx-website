@@ -1,0 +1,616 @@
+/* Variables de color */
+:root {
+    --primary-color: #00AEEF;
+    --secondary-color: #f9f9f9;
+    --third-color: #222222;
+    --text-color: #FFFFFF;
+    --cta-hover: rgba(0, 174, 239, 0.2);
+    --border-bottom: #b6b6b62d;
+    --gradient-title: linear-gradient(90deg, #03418e, #00FFFF, #afffff, #2879dc);
+    --gradient-title-hover: linear-gradient(90deg, #0098cf, #00dada);
+    --gradient-title-bl: linear-gradient(90deg, #03418e, #16d7d7, #2879dc);
+    --gradient-title-bla: linear-gradient(90deg, #66a5f3, #2a4b7d, #81b2ef);
+}
+
+/* General */
+body {
+    background-color: #000000;
+    color: var(--text-color);
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    margin: 0;
+    padding: 0;
+}
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+/* HEADER */
+header {
+    background-color: transparent;
+    padding: 0x 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .3px solid var(--border-bottom);
+}
+header > nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 100px 0 0;
+    background: #0000002f;
+}
+
+/* Logo */
+.logo{
+    margin-left: 90px;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    padding: 10px 0;
+    opacity: 0;
+    transform: translateX(100px);
+}
+.logo.show {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.logo > img{
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.363)); /* Sombra en azul cian */
+    object-fit: cover;
+}
+
+/* Menú de Navegación */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.nav-links li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links li, .language-switch {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* Botón de Cambio de Idioma */
+.language-switch {
+    background: none;
+    border: 2px solid var(--text-color);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.language-switch:hover {
+    background: var(--cta-hover);
+}
+
+/* HERO SECTION */
+.hero {
+    height: 80vh;
+    text-align: center;
+    padding: 100px 110px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-content:space-around;
+    background: #0000002f;
+}
+
+/* Texto Principal */
+.hero-text{
+    width: 100%;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hero h1 {
+    font-size: 4.1em;
+    text-shadow: 0 0 10px #ffffff2b;
+    font-weight: 700;
+    margin-bottom: 1px;
+    text-align: center;
+    background: var(--gradient-title);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -ms-background-clip: text;
+    -o-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-content: center;
+    background-size: 200% auto;
+    animation: gradientAnimation 1.5s infinite alternate;
+}
+
+/* Animación para hacer el gradient más visible */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
+/* Subtítulo */
+.hero p {
+    font-size: 1.3em;
+    text-shadow: 0 0 10px #ffffff62;
+    color: var(--text-color);
+    max-width: 700px;
+    font-weight: 500;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0;
+    transform: scale(0.5); /* Inicia más pequeño */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.hero-text p.show {
+    opacity: 1;
+    transform: scale(1); /* Se agranda a su tamaño original */
+}
+
+/*
+.hero-image{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    object-fit: contain;
+}
+.hero-image > img{
+    width: 100%;
+    object-fit: contain;
+}*/
+/* Botón CTA */
+.cta-button {
+    background: var(--gradient-title);
+    color: var(--text-color);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    background: var(--gradient-title-hover);
+    color: var(--text-color);
+    transform: scale(1.05);
+}
+
+/* FONDO ANIMADO */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url('../images/animated-bg.svg') center/cover no-repeat;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.gestion-inteligente{
+    height: 100vh;
+    padding: 20px 5px;
+    background: var(--gradient-title-bla);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.gest-int-des{
+    width: 47%;
+    height: 85vh;
+    background: var(--secondary-color);
+    box-shadow: 0 0 3px 4px #2222220b;
+    padding: 70px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.gest-int-des > h4{
+    margin-top: 1px;
+    color: var(--third-color);
+    font-size: 1.5rem;
+    margin-bottom: 1px;
+}
+.gest-int-des > p{
+    color: var(--third-color);
+    font-size: 1.1rem;
+    max-width: 700px;
+    font-weight: 500;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-align: center;
+}
+.int-btn{
+    background: var(--gradient-title-bla);
+    color: var(--text-color);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+    background-size: 200% auto;
+    animation: gradientAnimation 1.5s infinite alternate;
+}
+.int-bt{
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: var(--text-color);
+    border: .3px solid #2879dc;
+    color: #2879dc;
+}
+.gest-int-img{
+    width: 100%;
+    margin-top: 7px;
+    background: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gest-int-img > img{
+    width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(10px 10px 20px rgba(50, 50, 50, 0.53)); /* Sombra en azul cian */
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Inicia ocultos */
+.gest-int-des h1, .gest-int-des h4, .gest-int-des p, .gest-int-img img {
+    opacity: 0;
+}
+
+/* Efecto de máquina de escribir */
+.gest-int-des > h1 {
+    font-size: 2.7rem; /* Ajusta este valor según sea necesario */
+    margin-bottom: 7px;
+    background: var(--gradient-title-bla);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-content: center;
+    background-size: 100% 100%; /* Asegura que el gradiente cubra todo el texto */
+    line-height: 1.2; /* Evita que el texto se corte */
+}
+
+/* Animación de crecimiento */
+.gest-int-des h4, .gest-int-des p {
+    transform: scale(0.5);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.gest-int-des h4.show, .gest-int-des p.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Imagen deslizándose desde abajo */
+.gest-int-img img {
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.gest-int-img img.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gest-int-instructivos{
+    width: 100%;
+    height: 33vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.gest-int-instructivos.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.gest-int-instructivo-text{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+.gest-int-instructivo-text > h2{
+    margin-left: 1px;
+    margin-bottom: 1px;
+    font-size: 2rem;
+    background: var(--gradient-title-bla);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -ms-background-clip: text;
+    -o-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-content: center;
+    background-size: 200% auto;
+    animation: gradientAnimation 1.5s infinite alternate;
+}
+.gest-int-instructivo-text > h5{
+    color: var(--third-color);
+    margin-top: 1px;
+}
+
+.gest-int-instructivo-img{
+    width: 25%;
+    margin-right: 0;
+}
+.gest-int-instructivo-img > img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.implementacion-consultoria{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.implementacion-consultoria-des{
+    width: 100%;
+    height: 100vh;
+    background: #00000045;
+}
+
+.implementacion-consultoria-title{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 25px 0;
+    justify-content: center;
+    align-items: center;
+}
+.implementacion-consultoria-img{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.implementacion-consultoria-img > img{
+    width: 100px;
+    object-fit: cover;
+}
+.implementacion-consultoria-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.implementacion-consultoria-text > h3{
+    background: var(--gradient-title);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -ms-background-clip: text;
+    -o-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-content: center;
+    background-size: 200% auto;
+    animation: gradientAnimation 1.5s infinite alternate;
+    font-size: 3em;
+    text-shadow: 0 0 10px #ffffff2b;
+    font-weight: 700;
+    margin-bottom: 1px;
+}
+.implementacion-consultoria-text > p{
+    text-align: center;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px #afffff47;
+}
+
+.implementacion-consultoria-data-pos{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 45px;
+}
+
+.implementacion-consultoria-data{
+    width: 17%;
+    padding: 30px 0;
+    border: .5px solid #afffff2d;
+    border-radius: 20px;
+    height: 120px;
+    background: #22222289;
+    box-shadow: 0px 0px 5px 5px #f9f9f90a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.implementacion-consultoria-data > label{
+    background: var(--gradient-title-bl);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -ms-background-clip: text;
+    -o-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-content: center;
+    background-size: 200% auto;
+    animation: gradientAnimation 1.5s infinite alternate;
+    font-size: 3.3em;
+    font-weight: 600;
+    text-shadow: 0 0 10px #ececec7a;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    margin-bottom: 1px;
+}
+.implementacion-consultoria-data > p{
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px #ececec7a;
+    margin-top: 1px;
+    font-weight: 500;
+}
+/* Cuando los labels sean visibles, se mostrarán */
+.implementacion-consultoria-data label.show {
+    opacity: 1;
+}
+
+/* Inicia ocultos */
+.implementacion-consultoria-text h3, 
+.implementacion-consultoria-text p {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Cuando sean visibles */
+.implementacion-consultoria-text h3.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.implementacion-consultoria-text p.show {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.4s; /* Se activa después del h3 */
+}
+
+/* Animación para la imagen del logo (rotación) */
+.implementacion-consultoria-img img {
+    transform: rotate(0deg);
+    transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+}
+
+.implementacion-consultoria-img img.show {
+    opacity: 1;
+    transform: rotate(360deg);
+}
+
+.formulario-cliente-wpp{
+    width: 40%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    padding: 13px;
+}
+
+.whatsapp-float img {
+    width: 55px;
+    height: 55px;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* Mensaje flotante */
+.whatsapp-message {
+    position: fixed;
+    bottom: 90px; /* Aparece arriba del botón */
+    right: 30px;
+    background-color: white;
+    color: #333;
+    padding: 12px 15px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    white-space: nowrap;
+}
+
+/* Mostrar mensaje */
+.whatsapp-message.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Animación de explosión */
+@keyframes explode {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.3);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* Clase para activar la explosión */
+.whatsapp-message.explode {
+    animation: explode 0.6s ease-out forwards;
+}
