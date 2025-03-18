@@ -515,8 +515,8 @@
     /* Mensaje flotante */
     .whatsapp-message {
         position: fixed;
-        bottom: 120px; /* Aparece arriba del botón */
-        right: 38px;
+        bottom: 85px; /* Aparece arriba del botón */
+        right: 15px;
         background-color: white;
         color: #333;
         padding: 12px 5px;
